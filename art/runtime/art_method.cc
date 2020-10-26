@@ -198,12 +198,15 @@ extern "C" void dumpDexFileByExecute(ArtMethod *artmethod)
 }
 
 extern "C" void dumpArtMethod(ArtMethod *artmethod) SHARED_REQUIRES(Locks::mutator_lock_) {
+  
   char *dexFilePath = (char *)malloc(sizeof(char) * 2000);
   if (dexFilePath == nullptr) {
     LOG(INFO) << "ArtMethod::dumpArtMethodinvoked,methodname:"
               << PrettyMethod(artmethod).c_str() << "malloc 2000 byte failed";
     return;
   }
+
+  LOG(INFO) << "ArtMethod::dumpArtMethodinvoked start ,methodname: " << PrettyMethod(artmethod).c_str(); 
   int fcmdline = -1;
   char szCmdline[64] = {0};
   char szProcName[256] = {0};

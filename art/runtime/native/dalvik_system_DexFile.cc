@@ -645,8 +645,10 @@ static JNINativeMethod gMethods[] = {
                 "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;"),
   NATIVE_METHOD(DexFile, getDexFileOutputPath,
                 "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;"),
+  //[start]added by amlloc 2020.9.29
   NATIVE_METHOD(DexFile, dumpMethodCode,
                 "(Ljava/lang/Object;)V"),
+  //[end]added by amlloc 2020.9.29
 
 };
 

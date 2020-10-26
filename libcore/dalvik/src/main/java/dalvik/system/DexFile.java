@@ -389,7 +389,7 @@ public final class DexFile {
             throws ClassNotFoundException, NoClassDefFoundError;
     private static native String[] getClassNameList(Object cookie);
     private static native boolean isBackedByOatFile(Object cookie);
-    private static native void dumpMethodCode(Object m);
+   
     /*
      * Open a DEX file.  The value returned is a magic VM cookie.  On
      * failure, an IOException is thrown.
@@ -511,6 +511,6 @@ public final class DexFile {
     public static native String getDexFileOutputPath(String fileName, String instructionSet)
         throws FileNotFoundException;
 
-    private static native void dumpDexFile(String dexFilePath, Object cookie);
-    private static native void dumpMethodCode(String eachclassName, String methodName, Object cookie, Object method);
+    public static native void dumpDexFile(String dexFilePath, Object cookie);
+    public static native void dumpMethodCode(Object method);
 }

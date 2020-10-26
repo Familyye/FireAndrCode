@@ -6032,7 +6032,7 @@ public final class ActivityThread {
         ClassLoader appClassLoader = ReflectUtils.getClassloader();
         Class DexFileClazz = null;
         List<Object> dexFilesArray = new ArrayList<Object>();
-        Field pathListField = ReflectUtils.getClassField(appClassLoader, "dalvik.system.BaseDexClassLoader", "PathList");
+        Field pathListField = ReflectUtils.getClassField(appClassLoader, "dalvik.system.BaseDexClassLoader", "pathList");
         Object pathListObject = ReflectUtils.getFieldObject("dalvik.system.BaseDexClassLoader", appClassLoader, "pathList");
         Object[] dexElements = (Object[])ReflectUtils.getFieldObject("dalvik.system.DexPathList", pathListObject, "dexElements");
         Field dexFile_fileField = null;
@@ -6051,8 +6051,9 @@ public final class ActivityThread {
             Log.e("ActivityThread", "get DexFileClazz error! fart faild!");
             return;
         }
+        
         for (Method method : DexFileClazz.getDeclaredMethods()){
-            if (method.getName().equals("getDeclaredMethods")){
+            if (method.getName().equals("getClassNameList")){
                 getClassNameListMethod = method;
                 getClassNameListMethod.setAccessible(true);
             }
